@@ -1,6 +1,6 @@
 ![](https://badgen.net/badge/Editor.js/v2.0/blue)
 
-# Image Tool
+# Image with text Tool
 
 Image with text Block for the [Editor.js](https://editorjs.io).
 
