@@ -79,7 +79,7 @@ var editor = EditorJS({
 
 ## Config Params
 
-Image Tool supports these configuration parameters:
+Image with text Tool supports these configuration parameters:
 
 | Field | Type     | Description        |
 | ----- | -------- | ------------------ |
@@ -166,7 +166,7 @@ Scenario:
 1. User select file from the device
 2. Tool sends it to **your** backend (on `config.endpoint.byFile` route)
 3. Your backend should save file and return file data with JSON at specified format.
-4. Image tool shows saved image and stores server answer
+4. Image with text tool shows saved image and stores server answer
 
 So, you can implement backend for file saving by your own way. It is a specific and trivial task depending on your
 environment and stack.
@@ -194,10 +194,10 @@ All additional fields will be saved at the `file` object of output data.
 Scenario:
 
 1. User pastes an URL of the image file to the Editor
-2. Editor pass pasted string to the Image Tool
+2. Editor pass pasted string to the Image with text Tool
 3. Tool sends it to **your** backend (on `config.endpoint.byUrl` route) via 'url' POST-parameter
 3. Your backend should accept URL, **download and save the original file by passed URL** and return file data with JSON at specified format.
-4. Image tool shows saved image and stores server answer
+4. Image with text tool shows saved image and stores server answer
 
 Response of your uploader should be at the same format as described at «[Uploading files from device](#from-device)» section
 
