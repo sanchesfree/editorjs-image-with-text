@@ -3,17 +3,26 @@
   --front-color: #388ae5;
   --border-color: #e8e8eb;
 
+&__clear {
+   clear:left;
+   height: 1px;
+   visibility: hidden;
+ }
+
   &__image {
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: 10px;
+    width: 50%;
+  max-height: 300px;
+   float:left;
 
     &-picture {
-      max-width: 100%;
       vertical-align: bottom;
       display: block;
     }
 
+     
     &-preloader {
       width: 50px;
       height: 50px;
@@ -44,6 +53,10 @@
   }
 
   &__caption {
+   display: inline-block;
+     width: 49%;
+     margin-left: 1%;
+   
     &[contentEditable="true"][data-placeholder]::before {
       position: absolute !important;
       content: attr(data-placeholder);
@@ -64,7 +77,10 @@
   }
 
   &__text {
-     min-height: 158px;
+     display: inline-block;
+  width: 49%;
+  margin-left: 1%;
+     min-height: 240px;
      margin-top: 10px;
    
     &[contentEditable="true"][data-placeholder]::before {
@@ -125,37 +141,6 @@
 
     .cdx-button {
       display: none;
-    }
-  }
-
-  /**
-   * Tunes
-   * ----------------
-   */
-
-  &--withBorder {
-    ^&__image {
-      border: 1px solid var(--border-color);
-    }
-  }
-
-  &--withBackground {
-    ^&__image {
-      padding: 15px;
-      background: var(--bg-color);
-
-      &-picture {
-        max-width: 60%;
-        margin: 0 auto;
-      }
-    }
-  }
-
-  &--stretched {
-    ^&__image {
-      &-picture {
-        width: 100%;
-      }
     }
   }
 }

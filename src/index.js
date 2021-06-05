@@ -10,7 +10,6 @@
  *  1) index.js — main Tool's interface, public API and methods for working with data
  *  2) uploader.js — module that has methods for sending files via AJAX: from device, by URL or File pasting
  *  3) ui.js — module for UI manipulations: render, showing preloader, etc
- *  4) tunes.js — working with Block Tunes: render buttons, handle clicks
  *
  * For debug purposes there is a testing server
  * that can save uploaded files and return a Response {@link UploadResponseFormat}
@@ -44,7 +43,6 @@
 // eslint-disable-next-line
 import css from './index.css';
 import Ui from './ui';
-import Tunes from './tunes';
 import ToolboxIcon from './svg/toolbox.svg';
 import Uploader from './uploader';
 
@@ -152,15 +150,6 @@ export default class ImageWithTextTool {
     });
 
     /**
-     * Module for working with tunes
-     */
-    this.tunes = new Tunes({
-      api,
-      actions: this.config.actions,
-      onChange: (tuneName) => this.tuneToggled(tuneName),
-    });
-
-    /**
      * Set saved state
      */
     this._data = {};
@@ -193,17 +182,6 @@ export default class ImageWithTextTool {
     this._data.text = text.innerHTML;
 
     return this.data;
-  }
-
-  /**
-   * Makes buttons with tunes: add background, add border, stretch image
-   *
-   * @public
-   *
-   * @returns {Element}
-   */
-  renderSettings() {
-    return this.tunes.render(this.data);
   }
 
   /**
@@ -305,12 +283,6 @@ export default class ImageWithTextTool {
     this._data.text = data.text || '';
     this.ui.fillCaption(this._data.caption);
     this.ui.fillText(this._data.text);
-
-    Tunes.tunes.forEach(({ name: tune }) => {
-      const value = typeof data[tune] !== 'undefined' ? data[tune] === true || data[tune] === 'true' : false;
-
-      this.setTune(tune, value);
-    });
   }
 
   /**
@@ -383,33 +355,6 @@ export default class ImageWithTextTool {
   tuneToggled(tuneName) {
     // inverse tune state
     this.setTune(tuneName, !this._data[tuneName]);
-  }
-
-  /**
-   * Set one tune
-   *
-   * @param {string} tuneName - {@link Tunes.tunes}
-   * @param {boolean} value - tune state
-   * @returns {void}
-   */
-  setTune(tuneName, value) {
-    this._data[tuneName] = value;
-
-    this.ui.applyTune(tuneName, value);
-
-    if (tuneName === 'stretched') {
-      /**
-       * Wait until the API is ready
-       */
-      Promise.resolve().then(() => {
-        const blockId = this.api.blocks.getCurrentBlockIndex();
-
-        this.api.blocks.stretchBlock(blockId, value);
-      })
-        .catch(err => {
-          console.error(err);
-        });
-    }
   }
 
   /**

@@ -31,6 +31,9 @@ export default class Ui {
       text: make('div', [this.CSS.input, this.CSS.text], {
         contentEditable: !this.readOnly,
       }),
+      clear: make('div', [this.CSS.clearLeft], {
+        contentEditable: false,
+      }),
     };
 
     /**
@@ -49,6 +52,7 @@ export default class Ui {
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
     this.nodes.wrapper.appendChild(this.nodes.text);
+    this.nodes.wrapper.appendChild(this.nodes.clear);
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -73,6 +77,7 @@ export default class Ui {
       imageEl: 'image-with-text-tool__image-picture',
       caption: 'image-with-text-tool__caption',
       text: 'image-with-text-tool__text',
+      clearLeft: 'image-with-text-tool__clear',
     };
   };
 
