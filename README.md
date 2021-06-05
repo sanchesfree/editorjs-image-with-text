@@ -2,7 +2,7 @@
 
 # Image Tool
 
-Image Block for the [Editor.js](https://editorjs.io).
+Image with text Block for the [Editor.js](https://editorjs.io).
 
 ![](https://capella.pics/63a03d04-3816-45b2-87b2-d85e556f0066.jpg)
 
@@ -29,13 +29,13 @@ This Tool is also capable of uploading & displaying video files using the <video
 Get the package
 
 ```shell
-npm i --save-dev @editorjs/image
+npm i --save-dev @editorjs/imageWithText
 ```
 
 Include module at your application
 
 ```javascript
-import ImageWithTextTool from '@editorjs/image';
+import ImageWithTextTool from '@editorjs/imageWithText';
 ```
 
 ### Other methods
@@ -45,12 +45,6 @@ import ImageWithTextTool from '@editorjs/image';
 1. Upload folder `dist` from repository
 2. Add `dist/bundle.js` file to your page.
 
-#### Loading from CDN
-
-You can load a specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/image).
-
-`https://cdn.jsdelivr.net/npm/@editorjs/image@2.3.0`
-
 Then require this script on page with Editor.js through the `<script src=""></script>` tag.
 
 ## Usage
@@ -58,7 +52,7 @@ Then require this script on page with Editor.js through the `<script src=""></sc
 Add a new Tool to the `tools` property of the Editor.js initial config.
 
 ```javascript
-import ImageWithTextTool from '@editorjs/image';
+import ImageWithTextTool from '@editorjs/imageWithText';
 
 // or if you inject ImageWithTextTool via standalone script
 const ImageWithTextTool = window.ImageWithTextTool;
@@ -68,7 +62,7 @@ var editor = EditorJS({
 
   tools: {
     ...
-    image: {
+    imageWithText: {
       class: ImageWithTextTool,
       config: {
         endpoints: {
