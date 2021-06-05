@@ -28,6 +28,9 @@ export default class Ui {
       caption: make('div', [this.CSS.input, this.CSS.caption], {
         contentEditable: !this.readOnly,
       }),
+      text: make('div', [this.CSS.input, this.CSS.text], {
+        contentEditable: !this.readOnly,
+      }),
     };
 
     /**
@@ -41,9 +44,11 @@ export default class Ui {
      *  </wrapper>
      */
     this.nodes.caption.dataset.placeholder = this.config.captionPlaceholder;
+    this.nodes.text.dataset.placeholder = this.config.textPlaceholder;
     this.nodes.imageContainer.appendChild(this.nodes.imagePreloader);
     this.nodes.wrapper.appendChild(this.nodes.imageContainer);
     this.nodes.wrapper.appendChild(this.nodes.caption);
+    this.nodes.wrapper.appendChild(this.nodes.text);
     this.nodes.wrapper.appendChild(this.nodes.fileButton);
   }
 
@@ -62,11 +67,12 @@ export default class Ui {
       /**
        * Tool's classes
        */
-      wrapper: 'image-tool',
-      imageContainer: 'image-tool__image',
-      imagePreloader: 'image-tool__image-preloader',
-      imageEl: 'image-tool__image-picture',
-      caption: 'image-tool__caption',
+      wrapper: 'image-with-text-tool',
+      imageContainer: 'image-with-text-tool__image',
+      imagePreloader: 'image-with-text-tool__image-preloader',
+      imageEl: 'image-with-text-tool__image-picture',
+      caption: 'image-with-text-tool__caption',
+      text: 'image-with-text-tool__text',
     };
   };
 
@@ -89,7 +95,7 @@ export default class Ui {
   /**
    * Renders tool UI
    *
-   * @param {ImageToolData} toolData - saved tool data
+   * @param {ImageWithTextToolData} toolData - saved tool data
    * @returns {Element}
    */
   render(toolData) {
@@ -221,6 +227,18 @@ export default class Ui {
   fillCaption(text) {
     if (this.nodes.caption) {
       this.nodes.caption.innerHTML = text;
+    }
+  }
+
+  /**
+   * Shows text input
+   *
+   * @param {string} text - text
+   * @returns {void}
+   */
+  fillText(text) {
+    if (this.nodes.text) {
+      this.nodes.text.innerHTML = text;
     }
   }
 

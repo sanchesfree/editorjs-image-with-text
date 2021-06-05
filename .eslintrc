@@ -5,6 +5,6 @@
   "globals": {
     "fetch": true,
     "ImageConfig": true,
-    "ImageToolData": true
+    "ImageWithTextToolData": true
   }
 }

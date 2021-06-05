@@ -54,7 +54,7 @@ export default class Tunes {
     return {
       wrapper: '',
       buttonBase: this.api.styles.settingsButton,
-      button: 'image-tool__tune',
+      button: 'image-with-text-tool__tune',
       buttonActive: this.api.styles.settingsButtonActive,
     };
   }
@@ -62,7 +62,7 @@ export default class Tunes {
   /**
    * Makes buttons with tunes: add background, add border, stretch image
    *
-   * @param {ImageToolData} toolData - generate Elements of tunes
+   * @param {ImageWithTextToolData} toolData - generate Elements of tunes
    * @returns {Element}
    */
   render(toolData) {
